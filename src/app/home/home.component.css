@@ -1,0 +1,18 @@
+.chat-text{
+  bottom: 0px;
+  position: fixed;
+}
+
+.chat-input{
+  border: 1px solid #00000000;
+  background-color: #343a40;
+  color: white;
+}
+
+.chat-input:focus{
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0);
+}
+
+.chat-ui{
+  padding-bottom: 80px;
+}

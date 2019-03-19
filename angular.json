@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "firebase-chat": {
+    "angular-chat": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/firebase-chat",
+            "outputPath": "dist/angular-chat",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,9 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -58,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "firebase-chat:build"
+            "browserTarget": "angular-chat:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "firebase-chat:build:production"
+              "browserTarget": "angular-chat:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "firebase-chat:build"
+            "browserTarget": "angular-chat:build"
           }
         },
         "test": {
@@ -103,7 +107,7 @@
         }
       }
     },
-    "firebase-chat-e2e": {
+    "angular-chat-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +116,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "firebase-chat:serve"
+            "devServerTarget": "angular-chat:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "firebase-chat:serve:production"
+              "devServerTarget": "angular-chat:serve:production"
             }
           }
         },
@@ -132,5 +136,5 @@
       }
     }
   },
-  "defaultProject": "firebase-chat"
+  "defaultProject": "angular-chat"
 }

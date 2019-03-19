@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  messages;
+
+  constructor(public apiService: ApiService) { }
 
   ngOnInit() {
+    this.messages = this.apiService.getMessages();
+  }
+
+  loginBtn() {
+    this.apiService.login();
+  }
+
+  logoutBtn() {
+    this.apiService.logout();
+  }
+
+  sendMessage(message) {
+    this.apiService.sendMessage(message);
+  }
+
+  fromTime(time) {
+    return moment(time).fromNow();
   }
 
 }

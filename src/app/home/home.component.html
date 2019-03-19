@@ -1,3 +1,41 @@
-<p>
-  home works!
-</p>
+<div class="container">
+  <div *ngIf="apiService.afAuth.user | async as user ; else showLogin">
+    <h5 class="text-white">Hello {{user.displayName}} !</h5>
+    <button class="btn btn-danger btn-lg" (click)="logoutBtn()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+    <button class="btn btn-danger btn-lg" (click)="loginBtn()">Login with Google</button>
+  </ng-template>
+
+
+  <div class="row justify-content-center pt-5 mb-5 chat-ui">
+    <div class="col-md-12">
+      <div class="card shadow mt-3 bg-dark text-white" *ngFor="let message of messages | async">
+        <div class="card-body">
+          <div class="card-text">
+            <p>
+              <small class="text-muted"> {{message.user}}, {{fromTime(message.date)}} </small>
+            </p>
+            {{message.message}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row justify-content-center pt-5 mb-5">
+    <div class="col-md-9 chat-text">
+      <div class="card shadow bg-dark text-white">
+        <div class="card-body">
+          <div class="form-row">
+            <input type="text" #inputMessage (keydown.enter)="sendMessage(inputMessage.value);inputMessage.value = '' "
+              class="form-control form-control-lg chat-input" [disabled]="!(apiService.afAuth.user | async)"
+              [placeholder]="(apiService.afAuth.user | async) ? 'Enter your message ...': 'Please login using Google'">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
