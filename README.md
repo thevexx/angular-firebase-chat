@@ -1,27 +1,39 @@
-# AngularChat
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
+# Angular Firebase Chat
 
-## Development server
+Angular Char project using Firebase and Bootstrap.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [Install](#install)
+* [Usage](#usage)
+ 
+## Install
+##### clone and install npm dependencies:
 
-## Code scaffolding
+    npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+##### Run the project with:
+```
+ng serve 
+```
 
-## Build
+## Usage
+#### Firebase
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+In this project we used the [AngularFire module](https://github.com/angular/angularfire2), more precisely the AngularFireAuth for Authentication using Google login, and AngularFireDatabase for realtime database.
 
-## Running unit tests
+#### Angular 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+In the Angular implementation part, a big part of the logic is implemented in the imput of the message :
+```html
+<input type="text" #inputMessage (keydown.enter)="sendMessage(inputMessage.value);inputMessage.value=''"
+class="form-control form-control-lg chat-input" [disabled]="!(apiService.afAuth.user | async)"
+[placeholder]="(apiService.afAuth.user | async) ? 'Enter your message ...': 'Please login using Google'">
+```
 
-## Running end-to-end tests
+this input will be disabled if the user is not logged in, and also when he press enter he sends a message.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Contribution
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+You can fork project from github. Pull requests are kindly accepted.
+1. npm install
+3. Run demo: ng serve / npm start
